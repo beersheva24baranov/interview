@@ -1,12 +1,14 @@
 package iterview;
 
 import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.IntStream;
 
 public class InterviewTasks {
-    public static boolean hasSumTwo(int[] array, int sum) {
-        Set<Integer> checked = new HashSet<>();
-        return IntStream.of(array).anyMatch(num -> checked.contains(sum - num) || !checked.add(num));
-    }
+    static public boolean hasSumTwo(int[] array, int sum) {
+        HashSet<Integer> set = new HashSet<>();
+        int i = 0;
+        while (i < array.length && !set.contains(sum - array[i])) {
+            set.add(array[i++]);
+        }
+        return i != array.length;
+    }  
 }
